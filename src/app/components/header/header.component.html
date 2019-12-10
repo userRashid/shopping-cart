@@ -1,0 +1,17 @@
+<header>
+  <div class="navbar bg-main">
+    <div class="container d-flex justify-content-between">
+      <a [routerLink]="'/'" class="navbar-brand d-flex align-items-center logo">
+        <i class="fa fa-star"></i>
+      </a>
+      <div class="ml-auto">
+        <span class="mr-3">
+          <app-search></app-search>
+        </span>
+        <span *ngIf="!shouldHideCartIcon">
+          <app-cart></app-cart>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
