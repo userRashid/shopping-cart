@@ -5,4 +5,5 @@ export interface IProduct {
   name: string;
   id: number;
   img_url: string;
+  quantity?: number;
 }

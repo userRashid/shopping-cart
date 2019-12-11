@@ -23,6 +23,11 @@ export class ProductListComponent implements OnInit {
   ) {
     this.store.select('shoping').subscribe((d) => {
       this.products = this.sortProduct(d.items, d.sorting);
+      if (d.filter !== '') {
+        this.products = this.products.filter((item: IProduct) => {
+          return item.price <= d.filter.max && item.price >= d.filter.min;
+        });
+      }
     });
   }
 
