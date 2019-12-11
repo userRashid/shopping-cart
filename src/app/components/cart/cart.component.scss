@@ -1,0 +1,11 @@
+.checkout {
+  position: relative;
+  .badge {
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    right: -15px;
+    font-size: 11px !important;
+    padding: 3px 5px;
+  }
+}

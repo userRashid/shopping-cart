@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng5SliderModule } from 'ng5-slider';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,10 @@ import { SearchComponent } from './components/search/search.component';
 import { CheckoutComponent } from './views/checkout/checkout.component';
 import { ProductListComponent } from './views/product-list/product-list.component';
 import { AddMoreComponent } from './components/add-more/add-more.component';
+import { StoreModule } from '@ngrx/store';
+import { ShopingReducer } from './store/reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ShopingEffects } from './store/effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,10 @@ import { AddMoreComponent } from './components/add-more/add-more.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    HttpClientModule,
+    StoreModule.forRoot({ shoping: ShopingReducer }),
+    EffectsModule.forRoot([ShopingEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

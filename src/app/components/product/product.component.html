@@ -1,16 +1,16 @@
 <div>
-  <img class="w-100" src="http://lorempixel.com/500/600/technics/">
+  <img class="w-100" src="{{item.img_url}}">
   <div>
-    Item 1
+    {{item.name}}
   </div>
   <div class="d-flex justify-content-between my-2">
     <span class="font-weight-bold">
-      <i class="fa fa-inr" aria-hidden="true"></i> 319
+      <i class="fa fa-inr" aria-hidden="true"></i> {{item.price}}
     </span>
-    <span>900</span>
-    <span class="text-success font-weight-bold">64% off</span>
+    <span>{{item.discount}}</span>
+    <span class="text-success font-weight-bold">{{((item.discount/item.price)*100).toFixed(0)}}% off</span>
   </div>
   <div class="text-center">
-    <button class="btn btn-warning btn-sm font-weight-bold">Add to Card</button>
+    <button class="btn btn-warning btn-sm font-weight-bold" (click)="addToCart(item)">Add to Card</button>
   </div>
 </div>

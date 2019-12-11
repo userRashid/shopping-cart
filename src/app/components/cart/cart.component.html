@@ -1,3 +1,4 @@
-<a [routerLink]="'/checkout'">
+<a class="checkout" [routerLink]="'/checkout'">
   <i class="fa fa-shopping-cart text-white"></i>
+  <span class="badge badge-danger" *ngIf="cart.length > 0">{{ cart.length }}</span>
 </a>
