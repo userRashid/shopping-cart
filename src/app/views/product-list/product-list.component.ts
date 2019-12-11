@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+declare var $: any;
+
 import { SortBy } from './../../components/sortby/sortby.constant';
 import { IProduct } from 'src/app/components/product/product.interface';
-import { GetItems } from 'src/app/store/actions';
+import { GetItems, DoFilter } from 'src/app/store/actions';
+import { Filter } from 'src/app/components/filter/filter.model';
 
 @Component({
   selector: 'app-product-list',
@@ -12,6 +15,8 @@ import { GetItems } from 'src/app/store/actions';
 export class ProductListComponent implements OnInit {
 
   products: Array<IProduct> = [];
+
+  private filterValues: Filter;
 
   constructor(
     private store: Store<any>
@@ -46,6 +51,18 @@ export class ProductListComponent implements OnInit {
         return condition2;
       }
       return 0;
+    });
+  }
+
+  onApplyFilter($event) {
+    this.filterValues = $event;
+    $('#filter').modal('hide');
+  }
+
+  applyFilter() {
+    this.store.dispatch(new DoFilter(this.filterValues));
+    this.products = this.products.filter((item: IProduct) => {
+      return item.price <= this.filterValues.max && item.price >= this.filterValues.min;
     });
   }
 

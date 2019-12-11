@@ -1,12 +1,14 @@
 import { Action } from '@ngrx/store';
 import { IProduct } from '../components/product/product.interface';
+import { Filter } from './../components/filter/filter.model';
 
 export enum ActionTypes {
   Add = '[Product] Add to cart',
   Remove = '[Product] Remove from cart',
   LoadItems = '[Products] Load items from server',
   LoadSuccess = '[Products] Load success',
-  DoSorting = '[Products] Do Sorting'
+  DoSorting = '[Products] Do Sorting',
+  DoFilter = '[Products] Do Filter'
 }
 
 export class AddToCart implements Action {
@@ -19,6 +21,12 @@ export class DoSorting implements Action {
   readonly type = ActionTypes.DoSorting;
 
   constructor(public payload: string) { }
+}
+
+export class DoFilter implements Action {
+  readonly type = ActionTypes.DoFilter;
+
+  constructor(public payload: Filter) { }
 }
 
 export class GetItems implements Action {
@@ -37,4 +45,4 @@ export class LoadItems implements Action {
   constructor(public payload: Array<IProduct>) { }
 }
 
-export type ActionsUnion = AddToCart | RemoveFromCart | LoadItems | GetItems | DoSorting;
+export type ActionsUnion = AddToCart | RemoveFromCart | LoadItems | GetItems | DoSorting | DoFilter;

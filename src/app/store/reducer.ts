@@ -1,10 +1,12 @@
+import { Filter } from './../components/filter/filter.model';
 import { SortBy } from './../components/sortby/sortby.constant';
 import { ActionsUnion, ActionTypes } from './actions';
 
 export const initialState = {
   items: [],
   cart: [],
-  sorting: SortBy.HIGH_LOW
+  sorting: SortBy.HIGH_LOW,
+  filter: ''
 };
 
 export function ShopingReducer(state = initialState, action: ActionsUnion) {
@@ -19,6 +21,12 @@ export function ShopingReducer(state = initialState, action: ActionsUnion) {
       return {
         ...state,
         sorting: action.payload
+      };
+
+    case ActionTypes.DoFilter:
+      return {
+        ...state,
+        filter: action.payload
       };
 
     case ActionTypes.Add:

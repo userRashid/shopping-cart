@@ -2,9 +2,9 @@
   <div class="col-lg-2 d-none d-sm-block">
     <div class="py-3 d-none d-lg-block">
       <span class="font-weight-bold d-block">Filter</span>
-      <app-filter></app-filter>
+      <app-filter (applyFilterEvent)="onApplyFilter($event)"></app-filter>
       <div class="text-center">
-        <button class="btn btn-primary btn-sm font-weight-bold">Apply</button>
+        <button class="btn btn-primary btn-sm font-weight-bold" (click)="applyFilter()">Apply</button>
       </div>
     </div>
   </div>
@@ -35,8 +35,8 @@
           <div class="modal-content rounded-0">
             <div class="modal-body p-0">
               <div class="p-2">
-                <h6 class="mb-23">Sort Options</h6>
-                <app-filter></app-filter>
+                <h6 class="mb-23">Filter Options</h6>
+                <app-filter (applyFilterEvent)="onApplyFilter($event)"></app-filter>
               </div>
               <div class="row border-top m-0">
                 <div class="col-6 pl-0 text-center border-right">
@@ -44,7 +44,8 @@
                     data-dismiss="modal">Cancel</button>
                 </div>
                 <div class="col-6 pr-0 text-center">
-                  <button type="button" class="btn btn-link btn-sm font-weight-bold pb-1 p-0">Apply</button>
+                  <button type="button" class="btn btn-link btn-sm font-weight-bold pb-1 p-0"
+                    (click)="applyFilter()">Apply</button>
                 </div>
               </div>
             </div>

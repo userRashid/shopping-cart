@@ -1,3 +1,4 @@
 <div class="my-3">
-  <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+  <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" (userChangeEnd)="onUserChangeEnd($event)"
+    [options]="options"></ng5-slider>
 </div>
