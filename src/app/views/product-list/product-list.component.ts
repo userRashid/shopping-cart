@@ -1,7 +1,7 @@
-import { SortBy } from './../../components/sortby/sortby.constant';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { SortBy } from './../../components/sortby/sortby.constant';
 import { IProduct } from 'src/app/components/product/product.interface';
 import { GetItems } from 'src/app/store/actions';
 

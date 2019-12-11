@@ -1,9 +1,10 @@
+import { SortBy } from './../components/sortby/sortby.constant';
 import { ActionsUnion, ActionTypes } from './actions';
 
 export const initialState = {
   items: [],
   cart: [],
-  sorting: ''
+  sorting: SortBy.HIGH_LOW
 };
 
 export function ShopingReducer(state = initialState, action: ActionsUnion) {

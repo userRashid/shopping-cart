@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng5SliderModule } from 'ng5-slider';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,7 +39,9 @@ import { ShopingEffects } from './store/effects';
     Ng5SliderModule,
     HttpClientModule,
     StoreModule.forRoot({ shoping: ShopingReducer }),
-    EffectsModule.forRoot([ShopingEffects])
+    EffectsModule.forRoot([ShopingEffects]),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
