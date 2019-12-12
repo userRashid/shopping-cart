@@ -1,5 +1,5 @@
+import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { IProduct } from 'src/app/components/product/product.interface';
-import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-more',
@@ -11,13 +11,18 @@ export class AddMoreComponent implements OnInit {
   quantity: number;
 
   @Input() product: IProduct;
+  @Output() qantityChange = new EventEmitter<IProduct>();
 
   remove(): void {
     this.quantity--;
+    this.product.quantity = this.quantity;
+    this.qantityChange.emit(this.product);
   }
 
   add(): void {
     this.quantity++;
+    this.product.quantity = this.quantity;
+    this.qantityChange.emit(this.product);
   }
 
   ngOnInit(): void {

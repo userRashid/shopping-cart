@@ -29,7 +29,7 @@
                 </div>
               </div>
               <div class="col-12 col-md-4">
-                <app-add-more [product]="item"></app-add-more>
+                <app-add-more [product]="item" (qantityChange)="onQantityChange($event)"></app-add-more>
               </div>
               <div class="col-12 col-md-4 text-left">
                 <button class="btn btn-link px-0" (click)="removeFromCart(item)">Remove</button>
