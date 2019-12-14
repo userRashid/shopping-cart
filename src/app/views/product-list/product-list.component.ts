@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 declare var $: any;
@@ -7,19 +7,24 @@ import { SortBy } from './../../components/sortby/sortby.constant';
 import { IProduct } from 'src/app/components/product/product.interface';
 import { GetItems, DoFilter } from 'src/app/store/actions';
 import { Filter } from 'src/app/components/filter/filter.model';
+import { Subscription } from 'rxjs';
+import { SearchService } from 'src/app/components/search/search.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html'
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
 
   products: Array<IProduct> = [];
+  subscription: Subscription;
+  searchQuery: string;
 
   private filterValues: Filter;
 
   constructor(
-    private store: Store<any>
+    private store: Store<any>,
+    private searchService: SearchService
   ) {
     this.store.select('shoping').subscribe((d) => {
       this.products = this.sortProduct(d.items, d.sorting);
@@ -28,6 +33,10 @@ export class ProductListComponent implements OnInit {
           return item.price <= d.filter.max && item.price >= d.filter.min;
         });
       }
+    });
+
+    this.subscription = this.searchService.getSearch().subscribe(data => {
+      this.searchQuery = data.query;
     });
   }
 
@@ -73,5 +82,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new GetItems());
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

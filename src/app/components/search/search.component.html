@@ -1,3 +1,6 @@
-<a href="#">
-  <i class="fa fa-search text-white"></i>
-</a>
+<span class="search-container">
+  <input (keyup)="onChange($event.target.value)" type="text" placeholder="Search...">
+  <div class="search">
+    <i class="fa fa-search text-white ml-2"></i>
+  </div>
+</span>

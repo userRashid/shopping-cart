@@ -9,7 +9,7 @@
     <a [routerLink]="'/'" class="btn btn-outline-primary mt-3">Continue Shopping</a>
   </div>
   <div class="col-md-8 mt-3">
-    <div *ngFor="let item of checkoutProducts">
+    <div *ngFor="let item of checkoutProducts | productFilter: searchQuery">
       <div class="border p-2 mb-2 bg-white">
         <div class="row d-flex justify-content-center align-items-center">
           <div class="col-4 col-md-3 col-lg-3">

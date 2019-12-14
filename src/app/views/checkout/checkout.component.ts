@@ -1,8 +1,10 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { IProduct } from 'src/app/components/product/product.interface';
 import { RemoveFromCart } from 'src/app/store/actions';
+import { SearchService } from 'src/app/components/search/search.service';
 
 @Component({
   selector: 'app-checkout',
@@ -11,9 +13,12 @@ import { RemoveFromCart } from 'src/app/store/actions';
 export class CheckoutComponent implements OnInit {
 
   checkoutProducts: Array<IProduct> = [];
+  subscription: Subscription;
+  searchQuery: string;
 
   constructor(
-    private store: Store<any>
+    private store: Store<any>,
+    private searchService: SearchService
   ) {
     this.store.pipe(select('shoping')).subscribe((data) => {
       const products = data.cart;
@@ -41,6 +46,10 @@ export class CheckoutComponent implements OnInit {
         }
       });
       this.checkoutProducts = output;
+    });
+
+    this.subscription = this.searchService.getSearch().subscribe(data => {
+      this.searchQuery = data.query;
     });
   }
 
