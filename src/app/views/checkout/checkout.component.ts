@@ -57,9 +57,7 @@ export class CheckoutComponent implements OnInit {
     this.store.dispatch(new RemoveFromCart(item));
   }
 
-  onQantityChange(product: IProduct): void {
-    console.log(product);
-  }
+  onQantityChange(product: IProduct): void { }
 
   get totalPrice(): number {
     return this.checkoutProducts.reduce((prev, cur) => {

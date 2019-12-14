@@ -10,6 +10,15 @@ $break-large: 1200px;
 $mainBgColor: $blue;
 $logoColor: $orange;
 
+@font-face {
+  font-family: verdana;
+  src: url(assets/fonts/verdana.ttf);
+}
+
+* {
+  font-family: "verdana";
+}
+
 body {
   background: $whiteSmoke;
 }
