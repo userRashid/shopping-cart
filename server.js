@@ -7,9 +7,9 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'dist/cart-app')));
-app.use(function(req, res) {
-  res.sendFile(path.join(__dirname, '/dist/cart-app/index.html'));
+app.use(express.static(path.join(__dirname, 'dist/assignment')));
+app.use(function (req, res) {
+  res.sendFile(path.join(__dirname, '/dist/assignment/index.html'));
 });
 
 var port = process.env.PORT || '3000';
