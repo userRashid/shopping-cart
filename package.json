@@ -8,10 +8,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "preinstall": "npm install -g angular-cli",
+    "postinstall": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "~0.802.1",
+    "@angular/compiler-cli": "~8.2.0",
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
     "@angular/compiler": "~8.2.0",
@@ -24,17 +27,18 @@
     "@ngrx/effects": "^8.5.2",
     "@ngrx/store": "^8.5.2",
     "@types/jquery": "^3.3.31",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
     "bootstrap": "^4.4.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
+    "typescript": "~3.5.3",
     "ng5-slider": "^1.2.4",
     "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.802.1",
-    "@angular/compiler-cli": "~8.2.0",
+    
     "@angular/language-service": "~8.2.0",
     "@types/bootstrap": "^4.3.1",
     "@types/jasmine": "~3.3.8",
@@ -51,6 +55,10 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "webpack": "^4.41.2"
+  },
+  "engines": {
+    "node": "10.16.0",
+    "npm": "6.13.0"
   }
 }
