@@ -18,9 +18,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   products: Array<IProduct> = [];
   subscription: Subscription;
-  searchQuery: string;
+  searchQuery = '';
 
   private filterValues: Filter;
+  private productClone = [];
 
   constructor(
     private store: Store<any>,
@@ -33,10 +34,12 @@ export class ProductListComponent implements OnInit, OnDestroy {
           return item.price <= d.filter.max && item.price >= d.filter.min;
         });
       }
+      this.productClone = JSON.parse(JSON.stringify(this.products));
     });
 
     this.subscription = this.searchService.getSearch().subscribe(data => {
-      this.searchQuery = data.query;
+      const filterText = data.query;
+      this.products = this.productClone ? this.productClone.filter(item => item.name.search(new RegExp(filterText, 'i')) > -1) : [];
     });
   }
 

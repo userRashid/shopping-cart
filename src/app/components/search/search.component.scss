@@ -33,11 +33,12 @@
       cursor: pointer;
     }
     &:focus {
-      width: 300px;
+      width: 200px;
       opacity: 1;
       cursor: text;
       padding: 0 5px;
       color: #fff;
+      border-radius: 0px;
     }
     &:focus ~ .search {
       z-index: 6;
