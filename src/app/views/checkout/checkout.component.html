@@ -45,12 +45,12 @@
       <h6 class="text-uppercase mb-1 border-bottom p-2">Price Details</h6>
       <div class="p-2" *ngFor="let item of checkoutProducts">
         <div class="row">
-          <span class="col-7">Price ({{item.quantity}} Item)</span>
+          <span class="col-6">Price ({{item.quantity}} Item)</span>
           <span class="col-1">:</span>
           <span class="col-4 text-right"><i class="fa fa-rupee mr-1"></i>{{item.price * item.quantity}}</span>
         </div>
         <div class="row pt-2">
-          <span class="col-7">Discount</span>
+          <span class="col-6">Discount</span>
           <span class="col-1">:</span>
           <span class="col-4 text-right"><i class="fa fa-rupee mr-1"></i>{{item.discount * item.quantity}}</span>
         </div>
